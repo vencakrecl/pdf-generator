@@ -1,0 +1,8 @@
+# Exclude IDE
+.idea
+
+# Exlucde dependencies
+node_modules
+
+# Exclude build
+dist

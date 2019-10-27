@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es6",
+    "charset": "utf8",
+    "noImplicitAny": true,
+    "removeComments": false,
+    "outDir": "dist/",
+    "sourceMap": true,
+    "typeRoots": ["node_modules/@types"],
+    "declaration": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["./src/*"]
+    },
+    "esModuleInterop": true
+  },
+  "compileOnSave": true,
+  "include": ["src/**/*", "demo/**/*", "test/**/*"],
+  "exclude": ["node_modules"]
+}

@@ -1,11 +1,10 @@
 import { Generator, Renderer, Template } from '../../src/index'
-import fs from 'fs'
 
 test('Create PDF', async () => {
   const generator = new Generator()
   const renderer = new Renderer()
 
-  const template = new Template('test', 'test/integration/template.pug', {
+  const template = new Template('test', `${__dirname}/../data/template.pug`, {
     properties: {
       title: {
         type: 'string'

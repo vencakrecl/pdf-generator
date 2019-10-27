@@ -1,16 +1,16 @@
 import pug from 'pug'
 import Template from './Template'
+import { ErrorObject } from 'ajv'
 
 class Renderer {
   private readonly templates: { [key: string]: Template }
+  private validationErrors: Array<ErrorObject>
 
   constructor() {
     this.templates = {}
+    this.validationErrors = []
   }
 
-  /**
-   * @param {Template} template
-   */
   public addTemplate(template: Template): void {
     if (this.templates[template.getKey()]) {
       throw new Error(`Template with key "${template.getKey()}" already exists.`)
@@ -19,11 +19,6 @@ class Renderer {
     this.templates[template.getKey()] = template
   }
 
-  /**
-   * @param {string} key
-   *
-   * @returns {Template}
-   */
   public getTemplate(key: string): Template {
     if (!this.templates[key]) {
       throw new Error(`Template with key "${key}" does not exists.`)
@@ -32,30 +27,24 @@ class Renderer {
     return this.templates[key]
   }
 
-  /**
-   * @returns {Array<string>}
-   */
   public getKeys(): Array<string> {
     return Object.keys(this.templates)
   }
 
-  /**
-   * @param {string} key
-   * @param {Object} data
-   *
-   * @returns {string}
-   */
-  public render(key: string, data: Record<string, any>): string {
+  public getValidationErrors(): Array<ErrorObject> {
+    return this.validationErrors
+  }
+
+  public render(key: string, data: object = {}): string {
     const template = this.getTemplate(key)
 
     const errors = template.validate(data)
 
-    // @todo return errors
     if (errors.length) {
-      throw new Error(`Template with key "${key}" is not valid. Errors: ${errors}`)
+      this.validationErrors = errors
+      throw new Error(`Template with key "${key}" is not valid.`)
     }
 
-    // @todo catch error
     return pug.renderFile(template.getPath(), { cache: true, ...data })
   }
 }

@@ -1,7 +1,6 @@
-import Generator from "@src/Generator";
+import Generator from '@src/Generator'
 
 test('Generator::generate', async () => {
-
   const generator = new Generator()
   const pdf = await generator.generate('abc')
 

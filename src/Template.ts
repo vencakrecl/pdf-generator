@@ -5,7 +5,12 @@ class Template {
   private readonly path: string
   private readonly ajvValidate: ValidateFunction
 
-  constructor(key: string, path: string, schema: Record<string, any>) {
+  /**
+   * @param key
+   * @param path
+   * @param schema
+   */
+  constructor(key: string, path: string, schema: object = {}) {
     this.key = key
     this.path = path
     const ajv = new Ajv()
@@ -20,7 +25,7 @@ class Template {
     return this.path
   }
 
-  public validate(data: Record<string, any>): Array<ErrorObject> {
+  public validate(data: object = {}): Array<ErrorObject> {
     const isValid = this.ajvValidate(data)
 
     if (!isValid) {

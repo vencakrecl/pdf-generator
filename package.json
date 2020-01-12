@@ -1,5 +1,5 @@
 {
-  "name": "pdf-generator",
+  "name": "@vencakrecl/pdf-generator",
   "author": "Venca Krecl",
   "version": "0.0.1",
   "description": "App for generating pdf from html templates.",

@@ -1,9 +1,13 @@
 {
   "name": "@vencakrecl/pdf-generator",
   "author": "Venca Krecl",
-  "version": "0.0.1",
-  "description": "App for generating pdf from html templates.",
+  "version": "0.0.2",
+  "description": "Package for convert HTML to PDF by headless chrome.",
   "license": "proprietary",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/VencaKrecl/pdf-generator"
+  },
   "scripts": {
     "test": "jest .",
     "lint": "tsdx lint",

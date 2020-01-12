@@ -24,7 +24,7 @@ class PdfRenderer {
     app.use('/static', express.static(this.templatesPath))
 
     this.server = app.listen(this.httpPort, () => {
-      console.log(`Starting static file server on ${this.httpPort}`)
+      console.info(`Starting HTTP server on ${this.httpPort}`)
     })
 
     await this.generator.start()
@@ -35,7 +35,9 @@ class PdfRenderer {
   }
 
   public renderPdf(key: string, data: object): Promise<Buffer> {
-    return this.generator.generate(this.renderer.render(key, { baseUrl: `http://localhost:${this.httpPort}/static`, ...data }))
+    return this.generator.generate(
+      this.renderer.render(key, { baseUrl: `http://localhost:${this.httpPort}/static`, ...data })
+    )
   }
 
   public async stop(): Promise<void> {
@@ -43,7 +45,7 @@ class PdfRenderer {
 
     if (this.server) {
       this.server.close(() => {
-        console.log('Closing static file server')
+        console.info('Closing HTTP server')
       })
     }
   }

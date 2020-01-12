@@ -1,0 +1,17 @@
+doctype html
+html
+    head
+        title TITLE
+        style
+            include ../../../node_modules/bootstrap/dist/css/bootstrap.min.css
+    body
+        div(class="container")
+            div(class="row")
+                div(class="col-12 text-center")
+                    h1 #{title}
+            div(class="row")
+                div(class="col-12")
+                    img(src=`http://localhost:4000/static/test-assets/img.png`)
+            div(class="row")
+                div(class="col-12")
+                    img(src=`https://via.placeholder.com/150`)

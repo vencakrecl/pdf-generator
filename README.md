@@ -12,9 +12,10 @@ Package for convert HTML to PDF by headless Chrome ([puppeteer](https://github.c
 npm install @vencakrecl/pdf-generator
 ```
 
-### DEMO
+### Demo
 ```bash
 npm run-script demo
+npm run-script demo-api ## HTTP server running on localhost:3001
 ```
 
 ### Example

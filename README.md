@@ -21,10 +21,10 @@ npm run-script demo-api ## HTTP server running on localhost:3001
 ### Example
 ```typescript
 import "@babel/polyfill"
-import PdfRenderer from '/src/PdfRenderer'
+import PdfGenerator from '/src/PdfGenerator'
 
 const createPdf = async () => {
-  const pdf = new PdfRenderer('base_dir')
+  const pdf = new PdfGenerator('base_dir')
   await pdf.start()
 
   pdf.addTemplate('test', 'template.pug', {

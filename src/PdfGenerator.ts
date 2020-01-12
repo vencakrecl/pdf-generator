@@ -1,22 +1,22 @@
 import express from 'express'
 import * as http from 'http'
-import Generator from './Generator'
-import Renderer from './Renderer'
-import Template from './Template'
+import PdfRenderer from './pdf-renderer/PdfRenderer'
+import HtmlRenderer from './html-renderer/HtmlRenderer'
+import Template from './html-renderer/Template'
 import path from 'path'
 
-class PdfRenderer {
+class PdfGenerator {
   private server: http.Server
   private readonly httpPort: number
   private readonly templatesPath: string
-  public generator: Generator
-  public renderer: Renderer
+  public generator: PdfRenderer
+  public renderer: HtmlRenderer
 
   constructor(templatesPath = __dirname, httpPort = 3000) {
     this.templatesPath = templatesPath
     this.httpPort = httpPort
-    this.renderer = new Renderer()
-    this.generator = new Generator()
+    this.renderer = new HtmlRenderer()
+    this.generator = new PdfRenderer()
   }
 
   public async start(): Promise<void> {
@@ -51,4 +51,4 @@ class PdfRenderer {
   }
 }
 
-export default PdfRenderer
+export default PdfGenerator

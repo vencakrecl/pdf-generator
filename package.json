@@ -1,7 +1,7 @@
 {
   "name": "@vencakrecl/pdf-generator",
   "author": "Venca Krecl <venca.email@gmail.com>",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.4",
   "description": "Package for convert HTML to PDF by headless chrome.",
   "license": "proprietary",
   "repository": {
@@ -43,5 +43,11 @@
     "pug": "^2.0.4",
     "puppeteer": "^2.0.0",
     "winston": "^3.2.1"
-  }
+  },
+  "files": [
+    "src",
+    "dist",
+    "package.json",
+    "README.md"
+  ]
 }

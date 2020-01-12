@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer'
 import { Browser } from 'puppeteer'
 
-class Generator {
+class PdfRenderer {
   private browser: Browser
 
   public async start(): Promise<void> {
@@ -30,4 +30,4 @@ class Generator {
   }
 }
 
-export default Generator
+export default PdfRenderer

@@ -1,8 +1,8 @@
-import PdfRenderer from '@src/PdfRenderer'
+import PdfGenerator from '@src/PdfGenerator'
 
-const pdf = new PdfRenderer(`${__dirname}/../data`)
+const pdf = new PdfGenerator(`${__dirname}/../data`)
 
-describe('PDF Renderer', () => {
+describe('PDF HtmlRenderer', () => {
   beforeAll(async () => {
     await pdf.start()
   })

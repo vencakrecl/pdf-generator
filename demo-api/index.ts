@@ -1,11 +1,11 @@
 import "@babel/polyfill"
-import PdfRenderer from '../src/PdfRenderer'
+import PdfGenerator from '../src/PdfGenerator'
 import path from 'path'
 import express from 'express'
 
 // PDF
 const baseDir = path.join(__dirname, '/../demo-api/templates')
-const pdf = new PdfRenderer(path.join(baseDir))
+const pdf = new PdfGenerator(path.join(baseDir))
 
 pdf.addTemplate('test-1', 'template-1/template.pug', {
   properties: {
@@ -38,7 +38,7 @@ app.post('/pdf-generate/:key', async (req, res) => {
   } catch (e) {
     console.error(e)
     res.status(400)
-    res.send({ error: e.message })
+    res.send({ error: e.message, validErrors: e.errors })
   }
 })
 

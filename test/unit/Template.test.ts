@@ -1,4 +1,4 @@
-import Template from '@src/Template'
+import Template from '@src/html-renderer/Template'
 
 test('Template:validate', async () => {
   const template = new Template('test', 'path')

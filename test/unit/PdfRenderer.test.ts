@@ -1,7 +1,7 @@
-import Generator from '@src/Generator'
+import PdfRenderer from '@src/pdf-renderer/PdfRenderer'
 
 test('Generator::generate', async () => {
-  const generator = new Generator()
+  const generator = new PdfRenderer()
   const pdf = await generator.generate('abc')
 
   expect(pdf).toBeDefined()

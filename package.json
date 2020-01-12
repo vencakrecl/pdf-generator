@@ -1,6 +1,6 @@
 {
   "name": "@vencakrecl/pdf-generator",
-  "author": "Venca Krecl",
+  "author": "Venca Krecl <venca.email@gmail.com>",
   "version": "0.0.2",
   "description": "Package for convert HTML to PDF by headless chrome.",
   "license": "proprietary",
@@ -8,6 +8,7 @@
     "type": "git",
     "url": "git://github.com/VencaKrecl/pdf-generator"
   },
+  "keywords": ["pdf"],
   "scripts": {
     "test": "jest .",
     "lint": "tsdx lint",

@@ -12,9 +12,9 @@ class PdfRenderer {
   public generator: Generator
   public renderer: Renderer
 
-  constructor(httpPort = 3000, templatesPath = __dirname) {
-    this.httpPort = httpPort
+  constructor(templatesPath = __dirname, httpPort = 3000) {
     this.templatesPath = templatesPath
+    this.httpPort = httpPort
     this.renderer = new Renderer()
     this.generator = new Generator()
   }
@@ -35,7 +35,7 @@ class PdfRenderer {
   }
 
   public renderPdf(key: string, data: object): Promise<Buffer> {
-    return this.generator.generate(this.renderer.render(key, data))
+    return this.generator.generate(this.renderer.render(key, { baseUrl: `http://localhost:${this.httpPort}/static`, ...data }))
   }
 
   public async stop(): Promise<void> {

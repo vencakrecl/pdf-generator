@@ -1,51 +1,50 @@
-import { Generator, Renderer, Template } from '../../src/index'
 import fs from 'fs'
 import PdfRenderer from '@src/PdfRenderer'
 
-test('Create PDF', async () => {
-  const generator = new Generator()
-  const renderer = new Renderer()
+const pdf = new PdfRenderer(`${__dirname}/../data`)
 
-  const template = new Template('test', `${__dirname}/../data/template.pug`, {
-    properties: {
-      title: {
-        type: 'string'
-      }
-    },
-    required: ['title']
+describe('PDF Renderer', () => {
+  beforeAll(async () => {
+    await pdf.start();
+  });
+
+  test('Create PDF', async () => {
+    pdf.addTemplate('test', `template.pug`, {
+      properties: {
+        title: {
+          type: 'string'
+        }
+      },
+      required: ['title']
+    })
+
+    const data = await pdf.renderPdf('test', {title: 'Title'})
+
+    expect(data).toBeDefined()
   })
 
-  renderer.addTemplate(template)
+  test('Create PDF - with assets', async () => {
 
-  await generator.start()
 
-  const pdf = await generator.generate(renderer.render('test', { title: 'My title' }))
+    pdf.addTemplate('test-assets', 'test-assets/template-assets.pug', {
+      properties: {
+        title: {
+          type: 'string'
+        }
+      },
+      required: ['title']
+    })
 
-  await generator.stop()
+    const data = await pdf.renderPdf('test-assets', {title: 'Title'})
 
-  expect(pdf).toBeDefined()
-})
+    fs.writeFile(`${__dirname}/../data/test-assets/test.pdf`, data, () => {
+      console.log('test.pdf created')
+    })
 
-test('Create PDF - with assets 2', async () => {
-  const pdf = new PdfRenderer(4000, `${__dirname}/../data`)
-  await pdf.start()
-
-  pdf.addTemplate('test', 'test-assets/template-assets.pug', {
-    properties: {
-      title: {
-        type: 'string'
-      }
-    },
-    required: ['title']
+    expect(data).toBeDefined()
   })
 
-  const data = await pdf.renderPdf('test', { title: 'Title' })
-
-  // fs.writeFile(`${__dirname}/../data/test-assets/test.pdf`, data, () => {
-  //   console.log('test.pdf created')
-  // })
-
-  expect(data).toBeDefined()
-
-  await pdf.stop()
+  afterAll(async (done) => {
+    await pdf.stop();
+  });
 })

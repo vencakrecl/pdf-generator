@@ -16,12 +16,16 @@ class Generator {
     const page = await this.browser.newPage()
     await page.setContent(content)
 
-    return await page.pdf()
+    const data = await page.pdf()
+
+    await page.close()
+
+    return data
   }
 
   public async stop(): Promise<void> {
     if (this.browser) {
-      return this.browser.close()
+      await this.browser.close()
     }
   }
 }

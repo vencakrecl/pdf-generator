@@ -1,8 +1,8 @@
 import express from 'express'
 import * as http from 'http'
-import Generator from '@src/Generator'
-import Renderer from '@src/Renderer'
-import Template from '@src/Template'
+import Generator from './Generator'
+import Renderer from './Renderer'
+import Template from './Template'
 import path from 'path'
 
 class PdfRenderer {

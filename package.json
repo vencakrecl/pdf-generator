@@ -1,7 +1,7 @@
 {
   "name": "@vencakrecl/pdf-generator",
   "author": "Venca Krecl <venca.email@gmail.com>",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "description": "Package for convert HTML to PDF by headless chrome.",
   "license": "proprietary",
   "repository": {
@@ -19,7 +19,8 @@
     "lint": "tsdx lint",
     "lint-fix": "tsdx lint src test --fix",
     "build": "tsdx build",
-    "watch": "tsdx watch"
+    "watch": "tsdx watch",
+    "demo": "tsdx build --entry demo/index.ts && node dist/index.js"
   },
   "devDependencies": {
     "@types/express": "^4.17.2",

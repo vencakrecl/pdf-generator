@@ -1,6 +1,6 @@
 # PDF Generator
 
-Package for convert HTML to PDF by headless chrome ([puppeteer](https://github.com/puppeteer/puppeteer)).
+Package for convert HTML to PDF by headless Chrome ([puppeteer](https://github.com/puppeteer/puppeteer)).
 
 * JSON schema validation ([ajv](https://github.com/epoberezkin/ajv))
 * Template engine ([pug](https://github.com/pugjs/pug))
@@ -12,25 +12,35 @@ Package for convert HTML to PDF by headless chrome ([puppeteer](https://github.c
 npm install @vencakrecl/pdf-generator
 ```
 
+### DEMO
+```bash
+npm run-script demo
+```
+
 ### Example
 ```typescript
-import PdfRenderer from '@src/PdfRenderer'
+import "@babel/polyfill"
+import PdfRenderer from '/src/PdfRenderer'
 
-const pdf = new PdfRenderer(`base_dir`)
-await pdf.start()
+const createPdf = async () => {
+  const pdf = new PdfRenderer('base_dir')
+  await pdf.start()
 
-pdf.addTemplate('test', 'template.pug', {
-  properties: {
-    title: {
-      type: 'string'
-    }
-  },
-  required: ['title']
-})
+  pdf.addTemplate('test', 'template.pug', {
+    properties: {
+      title: {
+        type: 'string'
+      }
+    },
+    required: ['title']
+  })
 
-const data = await pdf.renderPdf('test', {title: 'Title'})
+  const data = await pdf.renderPdf('test', {title: 'Title'})
 
-console.log(data)
+  console.log(data)
 
-await pdf.stop()
+  await pdf.stop()
+}
+
+createPdf()
 ```

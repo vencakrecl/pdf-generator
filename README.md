@@ -4,8 +4,8 @@ Package for convert HTML to PDF by headless chrome (https://github.com/puppeteer
 
 * JSON schema validation (https://github.com/epoberezkin/ajv)
 * Template engine (https://github.com/pugjs/pug)
-* Css (https://github.com/twbs/bootstrap)
-* Http server for static files (https://github.com/expressjs/expressjs.com)
+* CSS (https://github.com/twbs/bootstrap)
+* HTTP server for static files (https://github.com/expressjs/expressjs.com)
 
 ### Example
 ```

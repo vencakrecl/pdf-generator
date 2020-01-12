@@ -6,6 +6,7 @@ import express from 'express'
 // PDF
 const baseDir = path.join(__dirname, '/../demo-api/templates')
 const pdf = new PdfGenerator(path.join(baseDir))
+pdf.setLogger(console)
 
 pdf.addTemplate('test-1', 'template-1/template.pug', {
   properties: {

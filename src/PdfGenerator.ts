@@ -6,6 +6,7 @@ import Template from './html-renderer/Template'
 import path from 'path'
 import Logger from './logger/Logger'
 import NullLogger from './logger/NullLogger'
+import TemplateLoader from './html-renderer/TemplateLoader'
 
 class PdfGenerator {
   private server: http.Server
@@ -14,6 +15,7 @@ class PdfGenerator {
   public generator: PdfRenderer
   public renderer: HtmlRenderer
   private logger: Logger
+  private templateLoader: TemplateLoader
 
   constructor(templatesPath = __dirname, httpPort = 3000) {
     this.templatesPath = templatesPath
@@ -21,6 +23,7 @@ class PdfGenerator {
     this.renderer = new HtmlRenderer()
     this.generator = new PdfRenderer()
     this.logger = new NullLogger()
+    this.templateLoader = new TemplateLoader(this.templatesPath)
   }
 
   public setLogger(logger: Logger): void {
@@ -38,16 +41,6 @@ class PdfGenerator {
     await this.generator.start()
   }
 
-  public addTemplate(key: string, filename = 'template', schema: object = {}): void {
-    this.renderer.addTemplate(new Template(key, path.join(this.templatesPath, filename), schema))
-  }
-
-  public renderPdf(key: string, data: object): Promise<Buffer> {
-    return this.generator.generate(
-      this.renderer.render(key, { baseUrl: `http://localhost:${this.httpPort}/static`, ...data })
-    )
-  }
-
   public async stop(): Promise<void> {
     await this.generator.stop()
 
@@ -56,6 +49,28 @@ class PdfGenerator {
         this.logger.info('Closing HTTP server')
       })
     }
+  }
+
+  public loadTemplates(): void {
+    const templates = this.templateLoader.load()
+
+    templates.forEach(item => {
+      this.renderer.addTemplate(item)
+    })
+  }
+
+  public addTemplate(key: string, filename = 'template', schema: object = {}): void {
+    this.renderer.addTemplate(new Template(key, path.join(this.templatesPath, filename), schema))
+  }
+
+  public getTemplateKeys(): Array<string> {
+    return this.renderer.getKeys()
+  }
+
+  public renderPdf(key: string, data: object): Promise<Buffer> {
+    return this.generator.generate(
+      this.renderer.render(key, { baseUrl: `http://localhost:${this.httpPort}/static`, ...data })
+    )
   }
 }
 

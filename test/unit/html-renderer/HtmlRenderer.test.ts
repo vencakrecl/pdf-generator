@@ -1,5 +1,5 @@
-import HtmlRenderer from '@src/html-renderer/HtmlRenderer'
-import Template from '@src/html-renderer/Template'
+import HtmlRenderer from '../../../src/html-renderer/HtmlRenderer'
+import Template from '../../../src/html-renderer/Template'
 
 test('HtmlRenderer::addTemplate', async () => {
   const renderer = new HtmlRenderer()
@@ -10,7 +10,7 @@ test('HtmlRenderer::addTemplate', async () => {
 
 test('HtmlRenderer::render', async () => {
   const renderer = new HtmlRenderer()
-  renderer.addTemplate(new Template('test', `${__dirname}/../data/template.pug`))
+  renderer.addTemplate(new Template('test', `${__dirname}/../../data/template.pug`))
 
   const res = '<!DOCTYPE html><html><head><title>TITLE</title></head><body><div><h1></h1></div></body></html>'
 
@@ -51,7 +51,7 @@ test('HtmlRenderer::render - with validation error', async () => {
 test('HtmlRenderer::render - with validation', async () => {
   const renderer = new HtmlRenderer()
   renderer.addTemplate(
-    new Template('test', `${__dirname}/../data/template.pug`, {
+    new Template('test', `${__dirname}/../../data/template.pug`, {
       properties: {
         title: {
           type: 'string'

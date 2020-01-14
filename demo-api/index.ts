@@ -1,30 +1,12 @@
-import "@babel/polyfill"
+import '@babel/polyfill'
 import PdfGenerator from '../src/PdfGenerator'
 import path from 'path'
 import express from 'express'
 
 // PDF
-const baseDir = path.join(__dirname, '/../demo-api/templates')
-const pdf = new PdfGenerator(path.join(baseDir))
+const pdf = new PdfGenerator(path.join(path.join(__dirname, '/../demo-api/templates')))
 pdf.setLogger(console)
-
-pdf.addTemplate('test-1', 'template-1/template.pug', {
-  properties: {
-    title: {
-      type: 'string'
-    }
-  },
-  required: ['title']
-})
-
-pdf.addTemplate('test-2', 'template-2/template.pug', {
-  properties: {
-    title: {
-      type: 'string'
-    }
-  },
-  required: ['title']
-})
+pdf.loadTemplates()
 
 // HTTP server
 const app = express()
@@ -43,8 +25,14 @@ app.post('/pdf-generate/:key', async (req, res) => {
   }
 })
 
+app.get('/templates', async (req, res) => {
+  const data = await pdf.getTemplateKeys()
 
-const runApp = async () => {
+  res.set('Content-Type', 'application/json')
+  res.send(JSON.stringify(data))
+})
+
+const runApp = async (): Promise<void> => {
   await pdf.start()
   app.listen(3001, () => {
     console.log('HTTP server running on 3001')

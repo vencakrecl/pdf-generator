@@ -1,7 +1,7 @@
 {
   "name": "@vencakrecl/pdf-generator",
   "author": "Venca Krecl <venca.email@gmail.com>",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "Package for convert HTML to PDF by headless chrome.",
   "license": "proprietary",
   "repository": {
@@ -16,8 +16,8 @@
   },
   "scripts": {
     "test": "jest .",
-    "lint": "tsdx lint",
-    "lint-fix": "tsdx lint src test --fix",
+    "lint": "tsdx lint src test demo demo-api",
+    "lint-fix": "tsdx lint src test demo demo-api --fix",
     "build": "tsdx build",
     "watch": "tsdx watch",
     "demo": "tsdx build --entry demo/index.ts && node dist/index.js",
@@ -29,14 +29,14 @@
     "@types/jest": "^24.0.25",
     "@types/pug": "^2.0.4",
     "@types/puppeteer": "^2.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.15.0",
+    "@typescript-eslint/eslint-plugin": "^2.16.0",
     "bootstrap": "^4.4.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-prettier": "^3.1.2",
     "jest": "^24.9.0",
     "prettier": "^1.19.1",
-    "tsdx": "^0.12.1"
+    "tsdx": "^0.12.3"
   },
   "dependencies": {
     "ajv": "^6.10.2",

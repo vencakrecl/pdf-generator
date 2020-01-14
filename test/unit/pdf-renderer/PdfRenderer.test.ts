@@ -1,4 +1,4 @@
-import PdfRenderer from '@src/pdf-renderer/PdfRenderer'
+import PdfRenderer from '../../../src/pdf-renderer/PdfRenderer'
 
 test('Generator::generate', async () => {
   const generator = new PdfRenderer()

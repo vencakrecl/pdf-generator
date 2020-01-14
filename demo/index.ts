@@ -1,9 +1,9 @@
-import "@babel/polyfill"
+import '@babel/polyfill'
 import PdfGenerator from '../src/PdfGenerator'
 import path from 'path'
 // import fs from 'fs'
 
-const createPdf = async () => {
+const createPdf = async (): Promise<void> => {
   const baseDir = path.join(__dirname, '/../demo/template')
 
   const pdf = new PdfGenerator(path.join(baseDir))
@@ -18,7 +18,7 @@ const createPdf = async () => {
     required: ['title']
   })
 
-  const data = await pdf.renderPdf('test', {title: 'Title'})
+  const data = await pdf.renderPdf('test', { title: 'Title' })
 
   // fs.writeFile(`${baseDir}/test.pdf`, data, () => {
   //   console.log('test.pdf created')

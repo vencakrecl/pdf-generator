@@ -22,24 +22,28 @@ describe('PDF HtmlRenderer', () => {
     expect(data).toBeDefined()
   })
 
-  test('Create PDF - with assets', async () => {
-    pdf.addTemplate('test-assets', 'test-assets/template-assets.pug', {
-      properties: {
-        title: {
-          type: 'string'
-        }
-      },
-      required: ['title']
-    })
+  test(
+    'Create PDF - with assets',
+    async () => {
+      pdf.addTemplate('test-assets', 'test-assets/template-assets.pug', {
+        properties: {
+          title: {
+            type: 'string'
+          }
+        },
+        required: ['title']
+      })
 
-    const data = await pdf.renderPdf('test-assets', { title: 'Title' })
+      const data = await pdf.renderPdf('test-assets', { title: 'Title' })
 
-    // fs.writeFile(`${__dirname}/../data/test-assets/test.pdf`, data, () => {
-    //   console.log('test.pdf created')
-    // })
+      // fs.writeFile(`${__dirname}/../data/test-assets/test.pdf`, data, () => {
+      //   console.log('test.pdf created')
+      // })
 
-    expect(data).toBeDefined()
-  }, 15 * 1000)
+      expect(data).toBeDefined()
+    },
+    15 * 1000
+  )
 
   afterAll(async done => {
     await pdf.stop()

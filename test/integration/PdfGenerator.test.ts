@@ -39,7 +39,7 @@ describe('PDF HtmlRenderer', () => {
     // })
 
     expect(data).toBeDefined()
-  })
+  }, 15 * 1000)
 
   afterAll(async done => {
     await pdf.stop()

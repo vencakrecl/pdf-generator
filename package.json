@@ -1,8 +1,8 @@
 {
   "name": "@vencakrecl/pdf-generator",
   "author": "Venca Krecl <venca.email@gmail.com>",
-  "version": "1.0.0-beta.6",
-  "description": "Package for convert HTML to PDF by headless chrome.",
+  "version": "1.0.0-beta.11",
+  "description": "Package for convert HTML to PDF by headless Chrome.",
   "license": "proprietary",
   "repository": {
     "type": "git",
@@ -16,17 +16,15 @@
   },
   "scripts": {
     "test": "jest .",
-    "lint": "tsdx lint src test demo demo-api",
-    "lint-fix": "tsdx lint src test demo demo-api --fix",
+    "lint": "tsdx lint",
+    "lint-fix": "tsdx lint src test --fix",
     "build": "tsdx build",
     "watch": "tsdx watch",
-    "demo": "tsdx build --entry demo/index.ts && node dist/index.js",
-    "demo-api": "tsdx build --entry demo-api/index.ts && node dist/index.js",
-    "publish-package": "npm build && npm publish --access public"
+    "publish-package": "npm run-script build && npm publish --access public"
   },
   "devDependencies": {
     "@types/express": "^4.17.2",
-    "@types/jest": "^24.0.25",
+    "@types/jest": "^24.9.0",
     "@types/pug": "^2.0.4",
     "@types/puppeteer": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^2.16.0",
@@ -44,6 +42,8 @@
     "pug": "^2.0.4",
     "puppeteer": "^2.0.0"
   },
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "files": [
     "src",
     "dist",

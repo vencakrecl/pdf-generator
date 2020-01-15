@@ -14,8 +14,8 @@ npm install @vencakrecl/pdf-generator
 
 ### Demo
 ```bash
-npm run-script demo
-npm run-script demo-api ## HTTP server running on localhost:3001
+make run-demo
+make run-demo-api ## HTTP server running on localhost:3001
 ```
 
 ### Example

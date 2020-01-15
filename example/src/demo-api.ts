@@ -1,10 +1,9 @@
-import '@babel/polyfill'
-import PdfGenerator from '../src/PdfGenerator'
+import { PdfGenerator } from '@vencakrecl/pdf-generator'
 import path from 'path'
 import express from 'express'
 
 // PDF
-const pdf = new PdfGenerator(path.join(path.join(__dirname, '/../demo-api/templates')))
+const pdf = new PdfGenerator(path.join(path.join(__dirname, '/../data/demo-api')))
 pdf.setLogger(console)
 pdf.loadTemplates()
 
@@ -39,4 +38,4 @@ const runApp = async (): Promise<void> => {
   })
 }
 
-runApp()
+export default runApp

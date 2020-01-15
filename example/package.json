@@ -1,0 +1,18 @@
+{
+  "name": "@vencakrecl/pdf-generator-example-base",
+  "author": "Venca Krecl <venca.email@gmail.com>",
+  "version": "1.0.0",
+  "license": "proprietary",
+  "scripts": {
+    "build": "tsdx build",
+    "watch": "tsdx watch",
+    "lint": "tsdx lint src",
+    "lint-fix": "tsdx lint src --fix",
+    "demo": "tsdx build && node dist/index.js demo",
+    "demo-api": "tsdx build && node dist/index.js demo-api"
+  },
+  "devDependencies": {
+    "@vencakrecl/pdf-generator": "^1.0.0-beta.10",
+    "tsdx": "^0.12.3"
+  }
+}

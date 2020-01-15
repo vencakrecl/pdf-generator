@@ -20,7 +20,7 @@ make run-demo-api ## HTTP server running on localhost:3001
 
 ### Example
 ```typescript
-import PdfGenerator from '@vencakrecl/pdf-generator'
+import { PdfGenerator } from '@vencakrecl/pdf-generator'
 
 const createPdf = async () => {
   const pdf = new PdfGenerator('base_dir')

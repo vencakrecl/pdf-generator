@@ -1,6 +1,6 @@
+import fs from 'fs'
 import path from 'path'
 import { PdfGenerator } from '@vencakrecl/pdf-generator'
-import fs from 'fs'
 
 const createPdf = async (): Promise<void> => {
   const baseDir = path.join(__dirname, '../data/demo')
@@ -17,10 +17,10 @@ const createPdf = async (): Promise<void> => {
     required: ['title']
   })
 
-  const data = await pdf.renderPdf('test', { title: 'Title' })
+  const data = await pdf.generate('test', { title: 'Title' })
 
   fs.writeFile(`${baseDir}/test.pdf`, data, () => {
-    console.log('test.pdf created')
+    console.log('test.pdf was created.')
   })
 
   await pdf.stop()

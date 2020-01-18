@@ -1,5 +1,7 @@
 # PDF Generator
 
+[![NPM version][npm]](https://www.npmjs.com/package/@vencakrecl/pdf-generator)
+
 Package for convert HTML to PDF by headless Chrome ([puppeteer](https://github.com/puppeteer/puppeteer)).
 
 * JSON schema validation ([ajv](https://github.com/epoberezkin/ajv))
@@ -7,7 +9,7 @@ Package for convert HTML to PDF by headless Chrome ([puppeteer](https://github.c
 * CSS ([bootstrap](https://github.com/twbs/bootstrap))
 * HTTP server for static files ([expressjs](https://github.com/expressjs/expressjs.com))
 
-### Install
+### Installation
 ```bash
 npm install @vencakrecl/pdf-generator
 ```
@@ -35,7 +37,7 @@ const createPdf = async () => {
     required: ['title']
   })
 
-  const data = await pdf.renderPdf('test', {title: 'Title'})
+  const data = await pdf.generate('test', {title: 'Title'})
 
   console.log(data)
 
@@ -44,3 +46,5 @@ const createPdf = async () => {
 
 createPdf()
 ```
+
+[npm]: https://img.shields.io/npm/v/@vencakrecl/pdf-generator.svg?style=flat-square

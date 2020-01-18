@@ -17,7 +17,7 @@ describe('PDF HtmlRenderer', () => {
       required: ['title']
     })
 
-    const data = await pdf.renderPdf('test', { title: 'Title' })
+    const data = await pdf.generate('test', { title: 'Title' })
 
     expect(data).toBeDefined()
   })
@@ -34,7 +34,7 @@ describe('PDF HtmlRenderer', () => {
         required: ['title']
       })
 
-      const data = await pdf.renderPdf('test-assets', { title: 'Title' })
+      const data = await pdf.generate('test-assets', { title: 'Title' })
 
       // fs.writeFile(`${__dirname}/../data/test-assets/test.pdf`, data, () => {
       //   console.log('test.pdf created')

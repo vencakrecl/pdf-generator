@@ -1,6 +1,6 @@
 import pug from 'pug'
 import Template from './Template'
-import ValidionError from './ValidionError'
+import ValidationError from './ValidationError'
 
 class HtmlRenderer {
   private readonly templates: { [key: string]: Template }
@@ -10,11 +10,11 @@ class HtmlRenderer {
   }
 
   public addTemplate(template: Template): void {
-    if (this.templates[template.getKey()]) {
-      throw new Error(`Template with key "${template.getKey()}" already exists.`)
+    if (this.templates[template.getId()]) {
+      throw new Error(`Template with key "${template.getId()}" already exists.`)
     }
 
-    this.templates[template.getKey()] = template
+    this.templates[template.getId()] = template
   }
 
   public getTemplate(key: string): Template {
@@ -25,7 +25,7 @@ class HtmlRenderer {
     return this.templates[key]
   }
 
-  public getKeys(): Array<string> {
+  public getIds(): Array<string> {
     return Object.keys(this.templates)
   }
 
@@ -35,7 +35,7 @@ class HtmlRenderer {
     const errors = template.validate(data)
 
     if (errors.length) {
-      throw new ValidionError(`Template with key "${key}" is not valid.`, errors)
+      throw new ValidationError(`Template with key "${key}" is not valid.`, errors)
     }
 
     return pug.renderFile(template.getPath(), { cache: true, ...data })

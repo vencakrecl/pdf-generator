@@ -5,7 +5,7 @@ test('HtmlRenderer::addTemplate', async () => {
   const renderer = new HtmlRenderer()
   renderer.addTemplate(new Template('test', 'path'))
 
-  expect(renderer.getKeys()).toEqual(['test'])
+  expect(renderer.getIds()).toEqual(['test'])
 })
 
 test('HtmlRenderer::render', async () => {

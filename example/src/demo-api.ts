@@ -1,6 +1,6 @@
-import { PdfGenerator } from '@vencakrecl/pdf-generator'
-import path from 'path'
 import express from 'express'
+import path from 'path'
+import { PdfGenerator } from '@vencakrecl/pdf-generator'
 
 // PDF
 const pdf = new PdfGenerator(path.join(path.join(__dirname, '/../data/demo-api')))
@@ -11,9 +11,9 @@ pdf.loadTemplates()
 const app = express()
 app.use(express.json())
 
-app.post('/pdf-generate/:key', async (req, res) => {
+app.post('/generate/:key', async (req, res) => {
   try {
-    const data = await pdf.renderPdf(req.params.key, req.body)
+    const data = await pdf.generate(req.params.key, req.body)
 
     res.set('Content-Type', 'application/pdf')
     res.send(data)
@@ -24,8 +24,8 @@ app.post('/pdf-generate/:key', async (req, res) => {
   }
 })
 
-app.get('/templates', async (req, res) => {
-  const data = await pdf.getTemplateKeys()
+app.get('/templates-ids', async (req, res) => {
+  const data = await pdf.getTemplateIds()
 
   res.set('Content-Type', 'application/json')
   res.send(JSON.stringify(data))

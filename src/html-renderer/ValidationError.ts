@@ -1,6 +1,6 @@
 import { ErrorObject } from 'ajv'
 
-class ValidionError extends Error {
+class ValidationError extends Error {
   public errors: Array<ErrorObject>
 
   constructor(message: string, errors: Array<ErrorObject>) {
@@ -9,4 +9,4 @@ class ValidionError extends Error {
   }
 }
 
-export default ValidionError
+export default ValidationError

@@ -12,16 +12,16 @@ class PdfGenerator {
   private server: http.Server
   private readonly httpPort: number
   private readonly templatesPath: string
-  public generator: PdfRenderer
-  public renderer: HtmlRenderer
+  private pdfRenderer: PdfRenderer
+  private htmlRenderer: HtmlRenderer
   private logger: Logger
   private templateLoader: TemplateLoader
 
   constructor(templatesPath = __dirname, httpPort = 3000) {
     this.templatesPath = templatesPath
     this.httpPort = httpPort
-    this.renderer = new HtmlRenderer()
-    this.generator = new PdfRenderer()
+    this.htmlRenderer = new HtmlRenderer()
+    this.pdfRenderer = new PdfRenderer()
     this.logger = new NullLogger()
     this.templateLoader = new TemplateLoader(this.templatesPath)
   }
@@ -35,18 +35,18 @@ class PdfGenerator {
     app.use('/static', express.static(this.templatesPath))
 
     this.server = app.listen(this.httpPort, () => {
-      this.logger.info(`Starting HTTP server on ${this.httpPort}`)
+      this.logger.info(`Starting HTTP server for static files on ${this.httpPort}`)
     })
 
-    await this.generator.start()
+    await this.pdfRenderer.start()
   }
 
   public async stop(): Promise<void> {
-    await this.generator.stop()
+    await this.pdfRenderer.stop()
 
     if (this.server) {
       this.server.close(() => {
-        this.logger.info('Closing HTTP server')
+        this.logger.info('Closing HTTP server for static files')
       })
     }
   }
@@ -55,21 +55,21 @@ class PdfGenerator {
     const templates = this.templateLoader.load()
 
     templates.forEach(item => {
-      this.renderer.addTemplate(item)
+      this.htmlRenderer.addTemplate(item)
     })
   }
 
   public addTemplate(key: string, filename = 'template', schema: object = {}): void {
-    this.renderer.addTemplate(new Template(key, path.join(this.templatesPath, filename), schema))
+    this.htmlRenderer.addTemplate(new Template(key, path.join(this.templatesPath, filename), schema))
   }
 
-  public getTemplateKeys(): Array<string> {
-    return this.renderer.getKeys()
+  public getTemplateIds(): Array<string> {
+    return this.htmlRenderer.getIds()
   }
 
-  public renderPdf(key: string, data: object): Promise<Buffer> {
-    return this.generator.generate(
-      this.renderer.render(key, { baseUrl: `http://localhost:${this.httpPort}/static`, ...data })
+  public generate(key: string, data: object): Promise<Buffer> {
+    return this.pdfRenderer.render(
+      this.htmlRenderer.render(key, { baseUrl: `http://localhost:${this.httpPort}/static`, ...data })
     )
   }
 }

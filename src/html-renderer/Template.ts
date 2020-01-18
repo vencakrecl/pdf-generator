@@ -1,24 +1,24 @@
-import Ajv, { ValidateFunction, ErrorObject } from 'ajv'
+import Ajv, { ErrorObject, ValidateFunction } from 'ajv'
 
 class Template {
-  private readonly key: string
+  private readonly id: string
   private readonly path: string
   private readonly ajvValidate: ValidateFunction
 
   /**
-   * @param key
+   * @param id
    * @param path
    * @param schema
    */
-  constructor(key: string, path: string, schema: object = {}) {
-    this.key = key
+  constructor(id: string, path: string, schema: object = {}) {
+    this.id = id
     this.path = path
     const ajv = new Ajv()
     this.ajvValidate = ajv.compile(schema)
   }
 
-  public getKey(): string {
-    return this.key
+  public getId(): string {
+    return this.id
   }
 
   public getPath(): string {

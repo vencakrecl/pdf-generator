@@ -10,11 +10,12 @@
     "typeRoots": ["node_modules/@types"],
     "declaration": true,
     "noEmit": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
       "@src/*": ["./src/*"]
     },
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
   "compileOnSave": true,
   "include": ["src/**/*", "test/**/*"],

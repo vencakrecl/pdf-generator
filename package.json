@@ -1,7 +1,7 @@
 {
   "name": "@vencakrecl/pdf-generator",
   "author": "Venca Krecl <venca.email@gmail.com>",
-  "version": "1.0.0-beta.11",
+  "version": "1.0.0-beta.13",
   "description": "Package for convert HTML to PDF by headless Chrome.",
   "license": "proprietary",
   "repository": {
@@ -9,7 +9,7 @@
     "url": "git://github.com/VencaKrecl/pdf-generator"
   },
   "keywords": [
-    "pdf"
+    "pdf", "pdf generator", "pdf renderer"
   ],
   "engines": {
     "node": ">= 10"
@@ -37,7 +37,7 @@
     "tsdx": "^0.12.3"
   },
   "dependencies": {
-    "ajv": "^6.10.2",
+    "ajv": "^6.11.0",
     "express": "^4.17.1",
     "pug": "^2.0.4",
     "puppeteer": "^2.0.0"

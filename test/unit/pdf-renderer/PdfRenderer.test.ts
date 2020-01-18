@@ -1,8 +1,8 @@
 import PdfRenderer from '../../../src/pdf-renderer/PdfRenderer'
 
-test('Generator::generate', async () => {
+test('Generator::render', async () => {
   const generator = new PdfRenderer()
-  const pdf = await generator.generate('abc')
+  const pdf = await generator.render('abc')
 
   expect(pdf).toBeDefined()
 

@@ -1,8 +1,8 @@
 name: Publish
 
 on:
-  release:
-    types: [published]
+  push:
+    tags: v*
 
 jobs:
   build:
@@ -13,7 +13,6 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: yarn install
-      - run: npm publish --access public
+      - run: npm run-script publish-package
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

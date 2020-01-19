@@ -1,11 +1,10 @@
-name: Test
+name: CI
 
 on: [push, pull_request]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [10.x, 12.x]
@@ -24,3 +23,20 @@ jobs:
         npm test
       env:
         CI: true
+  publish:
+    if: {{ github.ref == 'ref/head/v*' }}
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 12
+    - name: publish
+      run: |
+        npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+        npm ci
+        npm run-script publish-package
+      env:
+        CI: true
+        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

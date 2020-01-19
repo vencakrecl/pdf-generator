@@ -1,6 +1,8 @@
 # PDF Generator
 
-[![NPM version][npm]](https://www.npmjs.com/package/@vencakrecl/pdf-generator)
+[![NPM package version][npm]](https://www.npmjs.com/package/@vencakrecl/pdf-generator)
+[![License][license]](https://github.com/VencaKrecl/pdf-generator/blob/master/LICENSE)
+[![Last test status][build]](https://github.com/VencaKrecl/pdf-generator/actions?query=workflow%3ATest)
 
 Package for convert HTML to PDF by headless Chrome ([puppeteer](https://github.com/puppeteer/puppeteer)).
 
@@ -48,3 +50,5 @@ createPdf()
 ```
 
 [npm]: https://img.shields.io/npm/v/@vencakrecl/pdf-generator.svg?style=flat-square
+[license]: https://img.shields.io/npm/l/@vencakrecl/pdf-generator.svg?style=flat-square
+[build]: https://img.shields.io/github/workflow/status/VencaKrecl/pdf-generator/Test

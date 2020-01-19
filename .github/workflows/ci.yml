@@ -26,7 +26,7 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
-    if: {{ github.ref == 'ref/head/v*' }}
+    if: github.ref == 'ref/head/v*'
     needs: test
     steps:
     - uses: actions/checkout@v1

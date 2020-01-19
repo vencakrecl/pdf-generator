@@ -3,7 +3,7 @@
   "author": "Venca Krecl <venca.email@gmail.com>",
   "version": "1.0.0",
   "description": "Package for convert HTML to PDF by headless Chrome.",
-  "license": "proprietary",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/VencaKrecl/pdf-generator"

@@ -28,6 +28,8 @@ class PdfGenerator {
 
   public setLogger(logger: Logger): void {
     this.logger = logger
+    this.templateLoader.setLogger(logger)
+    this.pdfRenderer.setLogger(logger)
   }
 
   public async start(): Promise<void> {

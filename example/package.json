@@ -12,7 +12,7 @@
     "demo-api": "tsdx build && node dist/index.js demo-api"
   },
   "devDependencies": {
-    "@vencakrecl/pdf-generator": "^1.0.2",
+    "@vencakrecl/pdf-generator": "^1.0.3",
     "tsdx": "^0.12.3"
   }
 }

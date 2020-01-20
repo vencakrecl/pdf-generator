@@ -3,6 +3,7 @@ import Ajv, { ErrorObject, ValidateFunction } from 'ajv'
 class Template {
   private readonly id: string
   private readonly path: string
+  private readonly schema: object = {}
   private readonly ajvValidate: ValidateFunction
 
   /**
@@ -13,8 +14,9 @@ class Template {
   constructor(id: string, path: string, schema: object = {}) {
     this.id = id
     this.path = path
+    this.schema = schema
     const ajv = new Ajv()
-    this.ajvValidate = ajv.compile(schema)
+    this.ajvValidate = ajv.compile(this.schema)
   }
 
   public getId(): string {
@@ -23,6 +25,10 @@ class Template {
 
   public getPath(): string {
     return this.path
+  }
+
+  public getSchema(): object {
+    return this.schema
   }
 
   public validate(data: object = {}): Array<ErrorObject> {

@@ -1,7 +1,7 @@
 {
   "name": "@vencakrecl/pdf-generator-example-base",
   "author": "Venca Krecl <venca.email@gmail.com>",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "license": "MIT",
   "scripts": {
     "build": "tsdx build",
@@ -12,7 +12,7 @@
     "demo-api": "tsdx build && node dist/index.js demo-api"
   },
   "devDependencies": {
-    "@vencakrecl/pdf-generator": "^1.0.5",
-    "tsdx": "^0.12.3"
+    "@vencakrecl/pdf-generator": "^1.1.1",
+    "tsdx": "^0.13.2"
   }
 }

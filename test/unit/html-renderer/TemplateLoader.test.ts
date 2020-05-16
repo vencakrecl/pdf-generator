@@ -11,10 +11,10 @@ test('TemplateLoader:load', () => {
   expect(templates[0].getSchema()).toStrictEqual({
     properties: {
       title: {
-        type: 'string'
-      }
+        type: 'string',
+      },
     },
-    required: ['title']
+    required: ['title'],
   })
   expect(templates[0].validate({})).toStrictEqual([
     {
@@ -22,8 +22,8 @@ test('TemplateLoader:load', () => {
       keyword: 'required',
       message: "should have required property 'title'",
       params: { missingProperty: 'title' },
-      schemaPath: '#/required'
-    }
+      schemaPath: '#/required',
+    },
   ])
   // template 2
   expect(templates[1].getId()).toBe('template-2')
@@ -31,10 +31,10 @@ test('TemplateLoader:load', () => {
   expect(templates[1].getSchema()).toStrictEqual({
     properties: {
       title: {
-        type: 'string'
-      }
+        type: 'string',
+      },
     },
-    required: ['title']
+    required: ['title'],
   })
   expect(templates[1].validate({ title: 'Title' })).toStrictEqual([])
 })

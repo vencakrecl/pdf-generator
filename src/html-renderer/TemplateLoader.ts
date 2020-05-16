@@ -23,7 +23,7 @@ class TemplateLoader {
     const dirs = fs.readdirSync(this.dirPath, 'utf8')
 
     const templates: Template[] = []
-    dirs.forEach(key => {
+    dirs.forEach((key) => {
       const templatePath = path.join(this.dirPath, key, this.templateName)
       const schemaPath = path.join(this.dirPath, key, this.schemaName)
 

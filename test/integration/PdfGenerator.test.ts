@@ -11,10 +11,10 @@ describe('PDF HtmlRenderer', () => {
     pdf.addTemplate('test', `template.pug`, {
       properties: {
         title: {
-          type: 'string'
-        }
+          type: 'string',
+        },
       },
-      required: ['title']
+      required: ['title'],
     })
 
     const data = await pdf.generate('test', { title: 'Title' })
@@ -28,10 +28,10 @@ describe('PDF HtmlRenderer', () => {
       pdf.addTemplate('test-assets', 'test-assets/template-assets.pug', {
         properties: {
           title: {
-            type: 'string'
-          }
+            type: 'string',
+          },
         },
-        required: ['title']
+        required: ['title'],
       })
 
       const data = await pdf.generate('test-assets', { title: 'Title' })
@@ -45,7 +45,7 @@ describe('PDF HtmlRenderer', () => {
     15 * 1000
   )
 
-  afterAll(async done => {
+  afterAll(async (done) => {
     await pdf.stop()
   })
 })

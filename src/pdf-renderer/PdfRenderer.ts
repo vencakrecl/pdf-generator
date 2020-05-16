@@ -22,7 +22,7 @@ class PdfRenderer {
     }
 
     const page = await this.browser.newPage()
-    page.on('console', msg => {
+    page.on('console', (msg) => {
       const message = `PAGE LOG:: ${msg.text()}`
       switch (msg.type()) {
         case 'error': {

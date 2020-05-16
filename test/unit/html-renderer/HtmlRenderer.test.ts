@@ -23,10 +23,10 @@ test('HtmlRenderer::render - with validation error', async () => {
     new Template('test', `${__dirname}/../data/template.pug`, {
       properties: {
         title: {
-          type: 'string'
-        }
+          type: 'string',
+        },
       },
-      required: ['title']
+      required: ['title'],
     })
   )
 
@@ -40,10 +40,10 @@ test('HtmlRenderer::render - with validation error', async () => {
         keyword: 'required',
         message: "should have required property 'title'",
         params: {
-          missingProperty: 'title'
+          missingProperty: 'title',
         },
-        schemaPath: '#/required'
-      }
+        schemaPath: '#/required',
+      },
     ])
   }
 })
@@ -54,10 +54,10 @@ test('HtmlRenderer::render - with validation', async () => {
     new Template('test', `${__dirname}/../../data/template.pug`, {
       properties: {
         title: {
-          type: 'string'
-        }
+          type: 'string',
+        },
       },
-      required: ['title']
+      required: ['title'],
     })
   )
 

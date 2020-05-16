@@ -56,7 +56,7 @@ class PdfGenerator {
   public loadTemplates(): void {
     const templates = this.templateLoader.load()
 
-    templates.forEach(item => {
+    templates.forEach((item) => {
       this.htmlRenderer.addTemplate(item)
     })
   }

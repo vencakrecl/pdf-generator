@@ -10,10 +10,10 @@ test('Template:validate - error', async () => {
   const template = new Template('test', 'path', {
     properties: {
       title: {
-        type: 'string'
-      }
+        type: 'string',
+      },
     },
-    required: ['title']
+    required: ['title'],
   })
 
   expect(template.validate({})).toEqual([
@@ -22,9 +22,9 @@ test('Template:validate - error', async () => {
       keyword: 'required',
       message: "should have required property 'title'",
       params: {
-        missingProperty: 'title'
+        missingProperty: 'title',
       },
-      schemaPath: '#/required'
-    }
+      schemaPath: '#/required',
+    },
   ])
 })

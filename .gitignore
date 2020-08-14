@@ -6,3 +6,6 @@ node_modules
 
 # Exclude build
 dist
+
+#OS
+.DS_Store

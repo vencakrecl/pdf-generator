@@ -61,7 +61,7 @@ class PdfGenerator {
     })
   }
 
-  public addTemplate(key: string, filename = 'template', schema: object = {}): void {
+  public addTemplate(key: string, filename = 'template', schema: Record<string, unknown> = {}): void {
     this.htmlRenderer.addTemplate(new Template(key, path.join(this.templatesPath, filename), schema))
   }
 
@@ -69,7 +69,7 @@ class PdfGenerator {
     return this.htmlRenderer.getIds()
   }
 
-  public generate(key: string, data: object): Promise<Buffer> {
+  public generate(key: string, data: Record<string, unknown>): Promise<Buffer> {
     return this.pdfRenderer.render(
       this.htmlRenderer.render(key, { baseUrl: `http://localhost:${this.httpPort}/static`, ...data })
     )

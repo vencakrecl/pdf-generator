@@ -29,7 +29,7 @@ class HtmlRenderer {
     return Object.keys(this.templates)
   }
 
-  public render(key: string, data: object = {}): string {
+  public render(key: string, data: Record<string, unknown> = {}): string {
     const template = this.getTemplate(key)
 
     const errors = template.validate(data)

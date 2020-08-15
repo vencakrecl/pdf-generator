@@ -1,7 +1,7 @@
 {
   "name": "@vencakrecl/pdf-generator",
   "author": "Venca Krecl <venca.email@gmail.com>",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Package for convert HTML to PDF by headless Chrome.",
   "license": "MIT",
   "repository": {
@@ -26,15 +26,15 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.7",
-    "@types/jest": "25.2.2",
+    "@types/jest": "^26.0.10",
     "@types/pug": "^2.0.4",
-    "@types/puppeteer": "^2.1.1",
-    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@types/puppeteer": "^3.0.1",
+    "@typescript-eslint/eslint-plugin": "^3.9.0",
     "bootstrap": "^4.5.2",
-    "eslint": "^7.6.0",
+    "eslint": "^7.7.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "jest": "25.5.2",
+    "jest": "26.4.0",
     "minimist": "^1.2.5",
     "prettier": "^2.0.5",
     "tsdx": "^0.13.2"
@@ -42,8 +42,8 @@
   "dependencies": {
     "ajv": "^6.12.3",
     "express": "^4.17.1",
-    "pug": "^2.0.4",
-    "puppeteer": "^3.3.0"
+    "pug": "^3.0.0",
+    "puppeteer": "^5.2.1"
   },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

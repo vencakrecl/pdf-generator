@@ -1,0 +1,21 @@
+GET http://localhost:3001/templates-ids
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+POST http://localhost:3001/generate/template-1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"title": "Title"}
+###
+
+POST http://localhost:3001/generate/template-2
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+###
+

@@ -8,6 +8,7 @@ test('Template:validate', async () => {
 
 test('Template:validate - error', async () => {
   const template = new Template('test', 'path', {
+    type: "object",
     properties: {
       title: {
         type: 'string',

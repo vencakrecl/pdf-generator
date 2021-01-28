@@ -9,7 +9,7 @@ import NullLogger from './logger/NullLogger'
 import TemplateLoader from './html-renderer/TemplateLoader'
 
 class PdfGenerator {
-  private server: http.Server
+  private server: http.Server | null
   private readonly httpPort: number
   private readonly templatesPath: string
   private pdfRenderer: PdfRenderer
@@ -24,6 +24,7 @@ class PdfGenerator {
     this.pdfRenderer = new PdfRenderer()
     this.logger = new NullLogger()
     this.templateLoader = new TemplateLoader(this.templatesPath)
+    this.server = null
   }
 
   public setLogger(logger: Logger): void {
@@ -56,7 +57,7 @@ class PdfGenerator {
   public loadTemplates(): void {
     const templates = this.templateLoader.load()
 
-    templates.forEach((item) => {
+    templates.forEach(item => {
       this.htmlRenderer.addTemplate(item)
     })
   }

@@ -21,6 +21,7 @@ test('HtmlRenderer::render - with validation error', async () => {
   const renderer = new HtmlRenderer()
   renderer.addTemplate(
     new Template('test', `${__dirname}/../data/template.pug`, {
+      type: "object",
       properties: {
         title: {
           type: 'string',
@@ -52,6 +53,7 @@ test('HtmlRenderer::render - with validation', async () => {
   const renderer = new HtmlRenderer()
   renderer.addTemplate(
     new Template('test', `${__dirname}/../../data/template.pug`, {
+      type: "object",
       properties: {
         title: {
           type: 'string',

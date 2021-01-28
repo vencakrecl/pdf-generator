@@ -4,12 +4,16 @@ import Logger from '../logger/Logger'
 import NullLogger from '../logger/NullLogger'
 
 class PdfRenderer {
-  private browser: Browser
+  private browser: Browser | null
   private logger: Logger
+
+  constructor() {
+    this.browser = null
+    this.logger = new NullLogger()
+  }
 
   public async start(): Promise<void> {
     this.browser = await puppeteer.launch()
-    this.logger = new NullLogger()
   }
 
   public setLogger(logger: Logger): void {
@@ -21,8 +25,13 @@ class PdfRenderer {
       await this.start()
     }
 
-    const page = await this.browser.newPage()
-    page.on('console', (msg) => {
+    if (!this.browser) {
+      throw new Error('Browser does not start.')
+    }
+
+    const page = await this.browser?.newPage()
+
+    page.on('console', msg => {
       const message = `PAGE LOG:: ${msg.text()}`
       switch (msg.type()) {
         case 'error': {

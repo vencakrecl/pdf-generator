@@ -35,7 +35,7 @@ class Template {
     const isValid = this.ajvValidate(data)
 
     if (!isValid) {
-      return this.ajvValidate.errors
+      return this.ajvValidate.errors as Array<ErrorObject>
     }
 
     return []

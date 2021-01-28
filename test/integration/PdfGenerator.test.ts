@@ -1,4 +1,4 @@
-import PdfGenerator from '@src/PdfGenerator'
+import PdfGenerator from '../../src/PdfGenerator'
 
 const pdf = new PdfGenerator(`${__dirname}/../data`)
 
@@ -9,6 +9,7 @@ describe('PDF HtmlRenderer', () => {
 
   test('Create PDF', async () => {
     pdf.addTemplate('test', `template.pug`, {
+      type: "object",
       properties: {
         title: {
           type: 'string',
@@ -26,6 +27,7 @@ describe('PDF HtmlRenderer', () => {
     'Create PDF - with assets',
     async () => {
       pdf.addTemplate('test-assets', 'test-assets/template-assets.pug', {
+        type: "object",
         properties: {
           title: {
             type: 'string',
@@ -45,7 +47,7 @@ describe('PDF HtmlRenderer', () => {
     15 * 1000
   )
 
-  afterAll(async (done) => {
+  afterAll(async () => {
     await pdf.stop()
   })
 })

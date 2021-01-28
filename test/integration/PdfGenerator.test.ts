@@ -9,7 +9,7 @@ describe('PDF HtmlRenderer', () => {
 
   test('Create PDF', async () => {
     pdf.addTemplate('test', `template.pug`, {
-      type: "object",
+      type: 'object',
       properties: {
         title: {
           type: 'string',
@@ -27,7 +27,7 @@ describe('PDF HtmlRenderer', () => {
     'Create PDF - with assets',
     async () => {
       pdf.addTemplate('test-assets', 'test-assets/template-assets.pug', {
-        type: "object",
+        type: 'object',
         properties: {
           title: {
             type: 'string',

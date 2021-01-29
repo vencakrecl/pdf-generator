@@ -15,7 +15,9 @@ Package for convert HTML to PDF by headless Chrome ([puppeteer](https://github.c
 ```bash
 npm install @vencakrecl/pdf-generator
 ```
-
+```bash
+yarn add @vencakrecl/pdf-generator
+```
 ### Demo
 ```bash
 make run-demo

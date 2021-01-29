@@ -1,7 +1,7 @@
 {
   "name": "@vencakrecl/pdf-generator",
   "author": "Venca Krecl <venca.email@gmail.com>",
-  "version": "1.3.0-beta.0",
+  "version": "1.3.0",
   "description": "Package for convert HTML to PDF by headless Chrome.",
   "license": "MIT",
   "repository": {
@@ -46,7 +46,7 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "types": "dist/index.d.ts",
-  "module": "dist/mylib.esm.js",
+  "module": "dist/pdf-generator.esm.js",
   "files": [
     "dist",
     "src",

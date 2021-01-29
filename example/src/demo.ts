@@ -9,12 +9,13 @@ const createPdf = async (): Promise<void> => {
   await pdf.start()
 
   pdf.addTemplate('test', 'template.pug', {
+    type: 'object',
     properties: {
       title: {
-        type: 'string'
-      }
+        type: 'string',
+      },
     },
-    required: ['title']
+    required: ['title'],
   })
 
   const data = await pdf.generate('test', { title: 'Title' })

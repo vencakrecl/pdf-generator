@@ -19,9 +19,9 @@ test('TemplateLoader:load', () => {
   })
   expect(templates[0].validate({})).toStrictEqual([
     {
-      dataPath: '',
+      instancePath: '',
       keyword: 'required',
-      message: "should have required property 'title'",
+      message: "must have required property 'title'",
       params: { missingProperty: 'title' },
       schemaPath: '#/required',
     },

@@ -37,9 +37,9 @@ test('HtmlRenderer::render - with validation error', async () => {
   } catch (e) {
     expect(e.errors).toEqual([
       {
-        dataPath: '',
+        instancePath: '',
         keyword: 'required',
-        message: "should have required property 'title'",
+        message: "must have required property 'title'",
         params: {
           missingProperty: 'title',
         },

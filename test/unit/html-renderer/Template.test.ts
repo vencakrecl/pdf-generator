@@ -19,9 +19,9 @@ test('Template:validate - error', async () => {
 
   expect(template.validate({})).toEqual([
     {
-      dataPath: '',
+      instancePath: '',
       keyword: 'required',
-      message: "should have required property 'title'",
+      message: "must have required property 'title'",
       params: {
         missingProperty: 'title',
       },
